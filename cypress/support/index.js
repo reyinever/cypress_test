@@ -15,6 +15,16 @@
 
 // Import commands.js using ES2015 syntax:
 import './commands'
+import { requiredOption } from 'commander'
 
 // Alternatively you can use CommonJS syntax:
 // require('./commands')
+
+require('../utils/PickTestsToRun')
+beforeEach(()=>{
+    const targetEnv=Cypress.env('testEnv') || Cypress.config('targetEnv')
+    cy.log('Set target environment to: \n ${JSON.stringify(targetEnv)}')
+    cy.log('Environment details are: \n ${JSON.stringify(Cypress.env(targetEnv))}')
+    cy.log('Now the test starting...')
+    Cypress.config('baseUrl',Cypress.env(targetEnv).baseUrl)
+})

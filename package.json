@@ -4,8 +4,10 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "ModuleRun":"node moduleRunIndex.js",
     "cypress:open": "cypress open",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "yarn cypress run --reporter junit --reporter-options 'mochaFile=junit-results/my-test-output.xml'",
+    "cy:verify":"yarn cypress verify"
   },
   "repository": {
     "type": "git",
